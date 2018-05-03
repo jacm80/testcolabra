@@ -10,7 +10,6 @@ import * as types from '../constants';
 export function* authenticate({ payload }) {
    try {
       const result = yield call(getToken, payload);
-      // console.log('>>>>> result', result);
       if (result) {
          yield put({ type: types.LOGIN_FAILED, payload: { loginFailed: false } });
          yield put({ type: 'Login' });

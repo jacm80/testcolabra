@@ -29,7 +29,6 @@ LoginScreen.propTypes = {
    email: PropTypes.string,
    password: PropTypes.string,
    loginFailed: PropTypes.bool,
-   navigator: PropTypes.object,
    setField: PropTypes.func,
    authenticate: PropTypes.func
 }

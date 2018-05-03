@@ -1,6 +1,6 @@
 import React from 'react';
 // import { StatusBar } from 'react-native';
-import { Text, View } from 'react-native';
+// import { Text, View } from 'react-native';
 import { applyMiddleware, createStore } from 'redux';
 import { Provider } from 'react-redux';
 import createSagaMiddleware from 'redux-saga';

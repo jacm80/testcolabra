@@ -5,6 +5,7 @@ import { addNavigationHelpers, StackNavigator } from 'react-navigation';
 
 import LoginScreen from '../modules/Login/screens/LoginScreen';
 import HomeScreen from '../modules/Home/screens/HomeScreen';
+import UserScreen from '../modules/User/screens/UserScreen';
 // import BackToLogin from '../modules/login/screens/BackToLogin';
 // import ForgotPassword from '../modules/login/screens/ForgotPassword';
 
@@ -25,6 +26,7 @@ export const AppNavigator = StackNavigator({
     //--- login -------------------------------------
     Login: { screen: LoginScreen },
     Home: { screen: HomeScreen },
+    User: { screen: UserScreen }
     // BackToLogin: { screen: BackToLogin },
     // ForgotPassword: { screen: ForgotPassword },
     // //--- account -----------------------------------

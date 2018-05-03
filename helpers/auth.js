@@ -13,28 +13,26 @@ const setUser = (user) => {
       });
       const userPairs = _.toPairs(user);
       AsyncStorage.multiSet(userPairs, (err) => {
-         if (err) { 
-            console.log('err', err); 
-         }
+         if (err) { console.log('err', err); }
       });
    } catch (error) {
       console.log('error', error);
    }
 }
 
-// const getUser = () => {
-//    try {
-//       const keys = ['first_name', 'last_name', 'email', 'phone', 'username'];
-//       let _user = { }
-//       _.map(keys, key => {
-//          const obj = { key: AsyncStorage.getItem(`${_prefix}:{key}`) };
-//          _user = { ..._user,  ...obj };
-//       });
-//       return _user;
-//    } catch (error) {
-//       console.log('error', error);
-//    }
-// }
+const getUser = () => {
+   try {
+      const keys = ['first_name', 'last_name', 'email', 'phone', 'username'];
+      let _user = { };
+      _.map(keys, key => {
+         const obj = { key: AsyncStorage.getItem(`${_prefix}:{key}`) };
+         _user = { ..._user,  ...obj };
+      });
+      return _user;
+   } catch (error) {
+      console.log('error', error);
+   }
+}
 
 const getToken = async (user) => {
    const headers = { 'Content-Type': 'application/json', Accept: 'application/json' };
@@ -73,6 +71,6 @@ const getToken = async (user) => {
 
 export {
    setUser,
-   // getUser,
+   getUser,
    getToken
 };

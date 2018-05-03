@@ -1,6 +1,6 @@
 import * as types from '../constants';
 
-const loginReducers = (state = { email: '', password: '' }, action) => {
+const loginReducers = (state = { email: 'jacanepa@gmail.com', password: '123' }, action) => {
    switch (action.type) {
       case types.SET_FIELD:
          // console.log('loginReducers ::: action.payload >>> ',action.payload)
