@@ -10,13 +10,20 @@ test('Authenticate Test', t => {
 
 	const credentialMock = { email: 'test@gmail.com', password: '321' }
 
-	// Mock to pass the ACTION to SAGA
+	// Mock to pass the ACTIONS to SAGA
 	const authenticateAction = () => {
 		return {
 			type: 'AUTHENTICATE',
 			payload: credentialMock
 		}
 	};
+
+	const loginFailed = () => {
+		return {
+			type: types.LOGIN_FAILED, 
+			payload: { loginFailed: false } 
+		}
+	}
 
 	const generator = authenticate(authenticateAction());
 	
@@ -34,7 +41,7 @@ test('Authenticate Test', t => {
 	t.deepEqual(
 		// mock to set the value true in the variable SAGA {result}
 		generator.next(true).value, 
-		put({ type: types.LOGIN_FAILED, payload: { loginFailed: false } }),
+		put(loginFailed()),
 		'2) Set loginFailed to FALSE'
 	);
 
@@ -45,8 +52,8 @@ test('Authenticate Test', t => {
 	);
 
 	t.deepEqual(
-		generator.next(), 
-		{ done: true, value: undefined }, 
+		generator.next().done, 
+		true, 
 		'4) Login Saga must be done'
 	);
 
