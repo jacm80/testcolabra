@@ -1,37 +1,54 @@
 import { URL_GET_TOKEN } from '../constants/globals';
 import { setUser, getUser } from '../helpers/auth';
 
-const getHeaders = () => {
-    const user = getUser();
+const getHeaders = async () => {
+    const user = await getUser();
     const headers = {
         'Content-Type': 'application/json',
-        'accept': 'application/json',
+        'Accept': 'application/json',
     };
-    if (user !== null) headers.token = { 'Authorization': token }
+    console.log('getHeaders :: user', user);
+    if (user.token) headers.Authorization = user.token;
     return headers;
 }
 
-// const refreshToken = ({ email, password}) => {
-//     const url = `URL_GET_TOKEN`;
-//     const response = await fetch(url, getHeaders(), { email, password });
-//     console.log(response);
-// }
+// let response = await fetch(
+//    URL_GET_TOKEN,
+//    {
+//       method: 'post',
+//       headers,
+//       body: JSON.stringify(user),
+//    }
+// );
+// let responseJson = await response.json();
 
+const tfetch = async (URL, req) => {
 
+    // console.log('tfetch request >>>>>> ',
+    // URL,
+    // {
+    //    method: req.method,
+    //    headers,
+    //    body: JSON.stringify(req.body),
+    // });
+    const headers = await getHeaders();
+    const _body = { ...req.body };
 
-// {
-// method: 'post',
-//   headers: {
-//     'Accept': 'application/json, text/plain, */* ',
-//     'Content-Type': 'application/json'
-//   },
-//   body: JSON.stringify({ a: 7, str: 'Some string: &=&' })
-// }
+    console.log('tfetch :: _body >>>>>>', _body);
+    console.log('tfetch :: req.method >>>>>>', req.method);
+    console.log('tfetch :: headers >>>>>>', headers);
 
-
-const tfetch = async (url, req) => {
-    const response = await fetch(url, { headers: getHeaders(), body: req });
-    return response;
+    const response = await fetch(
+        URL,
+        {
+            method: req.method,
+            headers,
+            body: JSON.stringify(_body),
+        }
+    );
+    return await response.json();
 }
 
-export default tfetch;
+export {
+    tfetch
+};

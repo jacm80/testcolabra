@@ -15,8 +15,10 @@ export function* authenticate({ payload }) {
          yield put({ type: 'Login' });
       } else {
          yield put({ type: types.LOGIN_FAILED, payload: { loginFailed: true } });
+         yield { error : 'No Login'}
       }
    } catch (error) {
+      yield error;
       yield put({ type: types.LOGIN_FAILED, payload: { loginFailed: true } });
    }
 }

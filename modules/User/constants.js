@@ -1,3 +1,6 @@
 export const SET_FIELD_USER = 'SET_FIELD_USER';
 export const CREATE_USER = 'CREATE_USER';
 export const FETCH_USER = 'FETCH_USER';
+export const CREATED_USER_SUCCESS = 'CREATED_USER_SUCCESS';
+export const BLANK_USER = 'BLANK_USER';
+export const ERROR_CREATE_USER = 'ERROR_CREATE_USER';

@@ -14,7 +14,16 @@ const createUser = (payload) => {
     };
 }
 
+
+const createdUserSuccess = (payload) => {
+    return {
+        type: types.CREATED_USER_SUCCESS,
+        payload
+    };
+}
+
 export {
     setFieldUser,
-    createUser
+    createUser,
+    createdUserSuccess
 }
